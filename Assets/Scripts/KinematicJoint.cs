@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class KinematicJoint : MonoBehaviour
 {
     [Range(-180.0f, 180.0f)]
     public float AngleDeg = 0.0f;
 
-    [Range(-45.0f, 45.0f)]
+    [Range(-180.0f, 180.0f)]
     public float Speed = 45f;
 
     public bool KeyboardControl = false; 
@@ -38,8 +37,8 @@ public class KinematicJoint : MonoBehaviour
             }
         }
 
-        // transform.localRotation = Quaternion.AngleAxis(AngleDeg, Vector3.forward);
-        current = Mathf.SmoothDampAngle(current, AngleDeg, ref currentVel, .5f, float.MaxValue);
+        //transform.localRotation = Quaternion.AngleAxis(AngleDeg, Vector3.forward);
+        current = Mathf.SmoothDampAngle(current, AngleDeg, ref currentVel, 1f, float.MaxValue);
         transform.localRotation = Quaternion.AngleAxis(current, Vector3.forward);
     }
 
